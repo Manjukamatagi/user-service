@@ -32,35 +32,4 @@ public class UserServiceImpl implements UserService{
         return "Created user";
     }
 
-    @Override
-    public User getUserById(Integer userId) {
-        System.out.println("Here in get user by id");
-       // return userRepository.getReferenceById(userId);
-       Optional<User> user= userRepository.findById(userId);
-       if (user.isPresent()){
-           return user.get();
-       }
-       return null;
-    }
-
-    @Override
-    public User updateUser(Integer userId, User user) {
-       User user1= userRepository.getReferenceById(userId) ;
-       userRepository.delete(user);
-
-     return  userRepository.save(user);
-    }
-
-    @Override
-    public String deleteUser(Integer userId) {
-        User user1= userRepository.getReferenceById(userId) ;
-        userRepository.delete(user1);
-        return "Deleted";
-    }
-
-    @Override
-    public User getUserByEmail(String email) {
-        User user= userRepository.findByEmail(email);
-        return user;
-    }
 }
