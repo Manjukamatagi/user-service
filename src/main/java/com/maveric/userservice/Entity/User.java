@@ -19,15 +19,6 @@ public class User {
     public void setUniqueId(int uniqueId) {
         this.uniqueId = uniqueId;
     }
-//
-//    public String getUniqueId() {
-//        return uniqueId;
-//    }
-//
-//    public void setUniqueId(String uniqueId) {
-//        this.uniqueId = uniqueId;
-//    }
-
     private String firstName;
     private String middleName;
     private String lastName;
