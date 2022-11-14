@@ -1,12 +1,13 @@
 package com.maveric.userservice.Entity;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
 @Table
+//@Data
+//@Builder
+
 public class User {
     @Id
   @GeneratedValue(strategy = GenerationType.AUTO)

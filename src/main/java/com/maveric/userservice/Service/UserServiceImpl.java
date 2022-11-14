@@ -2,18 +2,21 @@ package com.maveric.userservice.Service;
 
 import com.maveric.userservice.Entity.User;
 import com.maveric.userservice.dao.UserRepository;
-import com.maveric.userservice.dto.UserDto;
+import lombok.Builder;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
+@Builder
 public class UserServiceImpl implements UserService{
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    ModelMapper modelMapper;
 
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
@@ -23,13 +26,13 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<User> getAllUsers() {
         List<User> list=userRepository.findAll();
-        return list;
+        return null;
     }
 
     @Override
-    public String createUser(User user) {
-        User user1=userRepository.save(user);
-        return "Created user";
+    public User createUser(User user) {
+       return userRepository.save(user);
+
     }
 
 }
