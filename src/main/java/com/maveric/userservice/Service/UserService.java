@@ -2,11 +2,10 @@ package com.maveric.userservice.Service;
 
 
 import com.maveric.userservice.Entity.User;
-import com.maveric.userservice.dto.UserDto;
-
-import java.util.List;
+import com.maveric.userservice.exception.UserNotFoundForIdException;
 
 public interface UserService {
-    List<User> getAllUsers();
+    User getUserById(String userId) throws UserNotFoundForIdException;
+//    List<User> getAllUsers();
 
 }

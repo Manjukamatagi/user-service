@@ -1,15 +1,14 @@
 package com.maveric.userservice.controller;
 
-import com.maveric.userservice.Entity.User;
 import com.maveric.userservice.Service.UserService;
-import com.maveric.userservice.dto.UserDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.util.List;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/api/v1/users")
@@ -24,11 +23,19 @@ public class userController {
      * Get ALL USERS
      * @return
      */
-    @GetMapping(value="")
-    public List<User> getAllUsers(){
-        System.out.println("hi this is from get all user");
-        return userService.getAllUsers();
+//    @GetMapping(value="/{id}")
+//    public List<User> getAllUsers(){
+//        System.out.println("hi this is from get all user");
+//        return userService.getAllUsers();
+//
+//    }
+
+    @GetMapping
+    public ResponseEntity <User>getUserById(@PathVariable("Id")String userId) UserNotFoundForIdException{
+        User user = userService.getAllUserById(userId);
+        return new ResponseEntity<>(user, HttpStatus.OK);
 
     }
+
 
 }
