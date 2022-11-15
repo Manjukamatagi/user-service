@@ -1,4 +1,4 @@
-package com.maveric.userservice;
+package com.maveric.userservice.Exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
