@@ -8,14 +8,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "/api/v1/users")
-@ResponseBody
-public class userController {
+//@RequestBody
+public class UserController {
     @Autowired
     UserService userService;
 
@@ -24,11 +27,11 @@ public class userController {
 
 
     /**
-     * Create user done
+     * Create user
      */
 
     @PostMapping
-    public ResponseEntity createUser(@RequestBody @Valid User user){
+    public ResponseEntity createUser(@Valid @RequestBody User user){
 
         User user1 = userService.createUser(user);
         UserDto responseDto = new UserDto();
@@ -40,12 +43,12 @@ public class userController {
         responseDto.setLastName(user1.getLastName());
         responseDto.setMiddleName(user1.getMiddleName());
         responseDto.setDateOfBirth(user1.getDateOfBirth());
-//        responseDto.getPhoneNumber(user1.getPhoneNumber());
-        HttpHeaders reHttpHeaders = new HttpHeaders();
-//        resonseHeaders.add("message", "user created successfully");
-        return new ResponseEntity(responseDto, reHttpHeaders, HttpStatus.CREATED);
+        responseDto.setPhoneNumber(user1.getPhoneNumber());
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.add("message", "User created successfully");
+        return new ResponseEntity(responseDto, responseHeaders, HttpStatus.CREATED);
 
-//
+
 //        if(user.getFirstName().isEmpty() || user.getLastName().isEmpty()){
 //            throw new UserNotCreatedException();
 //        }

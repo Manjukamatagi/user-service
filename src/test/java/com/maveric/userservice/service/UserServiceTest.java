@@ -4,7 +4,6 @@ package com.maveric.userservice.service;
 import com.maveric.userservice.Entity.User;
 import com.maveric.userservice.Service.UserService;
 import com.maveric.userservice.dao.UserRepository;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.mockito.InjectMocks;
@@ -24,7 +23,7 @@ public class UserServiceTest {
 
     private User user;
 
-    @BeforeAll
+//    @BeforeAll
 //    public void setUp(){
 //        userRepository = Mockito.mock(UserRepository.class);
 //        userService = UserServiceImpl.builder().userRepository(userRepository).build();

@@ -14,14 +14,13 @@ import java.sql.Date;
 @AllArgsConstructor
 public class UserDto {
     private String firstName;
-    private String middleName;
     private String lastName;
-    private String email;
+    private String middleName;
     private String phoneNumber;
+    private String email;
     private String address;
     private Date dateOfBirth;
     @Enumerated(EnumType.STRING)
     private Gender gender;
     private String _Id;
-
 }

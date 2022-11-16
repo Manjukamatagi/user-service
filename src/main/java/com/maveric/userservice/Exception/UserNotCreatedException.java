@@ -12,5 +12,4 @@ public class UserNotCreatedException extends  RuntimeException {
         return new ResponseEntity<>("No proper user details in the request body", HttpStatus.NOT_ACCEPTABLE);
     }
 
-
 }
