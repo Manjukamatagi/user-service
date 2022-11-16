@@ -1,18 +1,13 @@
 package com.maveric.userservice.dto;
 
-import com.maveric.userservice.enums.Gender;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import java.sql.Date;
+import java.util.Date;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class UserDto {
+public class UserRequest {
     private String firstName;
     private String lastName;
     private String middleName;
@@ -21,6 +16,6 @@ public class UserDto {
     private String address;
     private Date dateOfBirth;
     @Enumerated(EnumType.STRING)
-    private Gender gender;
-    private String _Id;
+    private String gender;
+    private String password;
 }
