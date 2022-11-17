@@ -1,4 +1,4 @@
-package com.maveric.userservice.Entity;
+package com.maveric.userservice.entity;
 
 import com.maveric.userservice.enums.Gender;
 import lombok.AllArgsConstructor;

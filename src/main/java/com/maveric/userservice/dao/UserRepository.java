@@ -1,6 +1,6 @@
 package com.maveric.userservice.dao;
 
-import com.maveric.userservice.Entity.User;
+import com.maveric.userservice.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

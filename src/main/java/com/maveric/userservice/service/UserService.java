@@ -1,9 +1,9 @@
-package com.maveric.userservice.Service;
+package com.maveric.userservice.service;
 
 import com.maveric.userservice.dao.UserRepository;
 import com.maveric.userservice.dto.UserRequest;
 import com.maveric.userservice.dto.UserResponse;
-import com.maveric.userservice.Entity.User;
+import com.maveric.userservice.entity.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

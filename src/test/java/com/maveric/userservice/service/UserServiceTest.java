@@ -1,8 +1,8 @@
-package com.maveric.userservice.Service;
+package com.maveric.userservice.service;
 
 
 import com.maveric.userservice.dao.UserRepository;
-import com.maveric.userservice.Entity.User;
+import com.maveric.userservice.entity.User;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.mockito.InjectMocks;
