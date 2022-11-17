@@ -7,7 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -19,9 +20,14 @@ public class UserService {
     private UserRepository userRepository;
 
     //Get user
-    public UserResponse getUser(Long userId){
-       Optional<User> user = userRepository.findById(userId);
-       return modelMapper.map(user.get(),UserResponse.class);
+    public List<UserResponse> getUsers(){
+
+        List<User> users = userRepository.findAll();
+        List<UserResponse> userResponseList = new ArrayList<>();
+        for(User user: users){
+            userResponseList.add(modelMapper.map(user,UserResponse.class));
+        }
+        return userResponseList;
 
     }
 
