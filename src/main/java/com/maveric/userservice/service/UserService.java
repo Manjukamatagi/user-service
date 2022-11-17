@@ -8,8 +8,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-
 @Service
 public class UserService {
 
@@ -20,17 +18,11 @@ public class UserService {
     private UserRepository userRepository;
 
     //Create user
-    public UserResponse createUser(UserRequest userRequest){
-        User userToSave = beforeCreateUser(userRequest);
-        User savedUser = userRepository.save(userToSave);
-        return modelMapper.map(savedUser,UserResponse.class);
-    }
-    public User beforeCreateUser(UserRequest userRequest){
-        User user = modelMapper.map(userRequest,User.class);
-       // user.setId(UUID.randomUUID().toString());
-        user.setCreatedAt(LocalDateTime.now());
-        return user;
-    }
+   public UserResponse updateUser(UserRequest userRequest,Long userId){
+       User userToUpdate = modelMapper.map(userRequest, User.class);
+       userToUpdate.setId(userId);
+       return modelMapper.map(userRepository.save(userToUpdate), UserResponse.class);
+   }
 
 
 }
