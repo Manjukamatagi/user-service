@@ -18,7 +18,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    //Get user
+    //Get user by ID
     public UserResponse getUser(Long userId){
        Optional<User> user = userRepository.findById(userId);
        return modelMapper.map(user.get(),UserResponse.class);
