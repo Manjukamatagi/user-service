@@ -33,6 +33,7 @@ public class User {
     @NotNull(message = "First name can not be null")
     private String firstName;
 
+
     @Valid
     @NotBlank
     @NotNull(message = "Last name can not be empty")
@@ -70,4 +71,5 @@ public class User {
     @NotBlank
     @NotNull(message = "Password can not be null")
     private String password;
+
 }

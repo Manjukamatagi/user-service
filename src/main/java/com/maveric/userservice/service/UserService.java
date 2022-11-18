@@ -6,6 +6,7 @@ import com.maveric.userservice.dto.UserResponse;
 import com.maveric.userservice.entity.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -19,18 +20,26 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     //Create user
     public UserResponse createUser(UserRequest userRequest){
         User userToSave = beforeCreateUser(userRequest);
         User savedUser = userRepository.save(userToSave);
+
         return modelMapper.map(savedUser,UserResponse.class);
     }
     public User beforeCreateUser(UserRequest userRequest){
         User user = modelMapper.map(userRequest,User.class);
        // user.setId(UUID.randomUUID().toString());
         user.setCreatedAt(LocalDateTime.now());
+//        String encodedPassword = PasswordEncoder.encode(user.getPassword());
+//        user.setPassword(encodedPassword);
         return user;
     }
+
+
 
 
 }
