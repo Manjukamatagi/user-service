@@ -44,6 +44,8 @@ public class User {
     @Pattern(regexp = "^\\d{10}$" , message = "Invalid mobile number format")
     private String phoneNumber;
 
+
+    @Column(unique = true)
     @Email(message = "Invalid mail format")
     private String email;
 
