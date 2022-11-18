@@ -17,7 +17,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    //Create user
+    //Update user
    public UserResponse updateUser(UserRequest userRequest,Long userId){
        User userToUpdate = modelMapper.map(userRequest, User.class);
        userToUpdate.setId(userId);
