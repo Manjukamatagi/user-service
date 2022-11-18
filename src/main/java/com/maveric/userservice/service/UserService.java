@@ -19,7 +19,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    //Get user
+    //Get All users
     public List<UserResponse> getUsers(){
 
         List<User> users = userRepository.findAll();
