@@ -15,7 +15,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    //Get user
+    //Get user by EmailID
     public UserResponse getUserByEmail(String email){
         return modelMapper.map(userRepository.findByEmail(email),UserResponse.class);
     }
