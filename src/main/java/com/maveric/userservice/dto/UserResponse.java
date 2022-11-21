@@ -1,5 +1,7 @@
 package com.maveric.userservice.dto;
 
+import com.maveric.userservice.enums.Gender;
+
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import java.util.Date;
@@ -18,7 +20,7 @@ public class UserResponse {
     private String address;
     private Date dateOfBirth;
     @Enumerated(EnumType.STRING)
-    private String gender;
+    private Gender gender;
 
 
     public String getId() {
@@ -85,11 +87,11 @@ public class UserResponse {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 }

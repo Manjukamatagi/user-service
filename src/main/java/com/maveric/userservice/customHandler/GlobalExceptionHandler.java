@@ -29,16 +29,16 @@ public class GlobalExceptionHandler extends RuntimeException {
     public ResponseEntity<Object> duplicateElementsException(EmailDuplicationException e){
         ErrorResponseForBadRequest  errorResponse = new ErrorResponseForBadRequest();
         errorResponse.setMessage(e.getMessage());
-        errorResponse.setCode(String.valueOf(HttpStatus.CONFLICT.value()));
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+        errorResponse.setCode(String.valueOf(HttpStatus.BAD_REQUEST.value()));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
     @ExceptionHandler(value = PhoneNumberDuplicateException.class)
     public ResponseEntity<Object> duplicateElementsException(PhoneNumberDuplicateException e){
         ErrorResponseForBadRequest  errorResponse = new ErrorResponseForBadRequest();
         errorResponse.setMessage(e.getMessage());
-        errorResponse.setCode(String.valueOf(HttpStatus.CONFLICT.value()));
-        return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+        errorResponse.setCode(String.valueOf(HttpStatus.BAD_REQUEST.value()));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 
 }
