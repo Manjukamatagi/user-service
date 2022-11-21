@@ -32,5 +32,4 @@ public class UserService {
        return modelMapper.map(userRepository.save(userToUpdate), UserResponse.class);
    }
 
-
 }
