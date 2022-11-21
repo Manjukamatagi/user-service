@@ -1,5 +1,6 @@
 package com.maveric.userservice.exception;
 
+import com.maveric.userservice.dto.ErrorResponseForBadRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

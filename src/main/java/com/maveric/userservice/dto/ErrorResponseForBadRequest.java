@@ -1,4 +1,4 @@
-package com.maveric.userservice.exception;
+package com.maveric.userservice.dto;
 
 import lombok.Data;
 
