@@ -1,0 +1,53 @@
+package com.maveric.userservice.service;
+
+import com.maveric.userservice.exception.UserNotFoundException;
+import com.maveric.userservice.mapper.UserMapper;
+import com.maveric.userservice.repository.UserRepository;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Optional;
+
+import static com.maveric.userservice.UserServiceApplicationTests.getUser;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.willDoNothing;
+import static org.mockito.Mockito.when;
+
+@ExtendWith(MockitoExtension.class)
+@RunWith(SpringRunner.class)
+public class UserServiceImplTest {
+
+    @InjectMocks
+    private UserServiceImpl service;
+
+    @Mock
+    private UserRepository repository;
+
+    @Mock
+    private UserMapper mapper;
+
+    @Mock
+    private Page pageResult;
+
+    @Test
+    void deleteUser() {
+        when(repository.findById("2")).thenReturn(Optional.of(getUser()));
+        willDoNothing().given(repository).deleteById("2");
+        String userDto = service.deleteUser("2");
+        assertSame( "User deleted successfully.",userDto);
+    }
+    @Test
+    void deleteUser_failure() {
+        when(repository.findById("3")).thenReturn(Optional.empty());
+        Throwable error = assertThrows(UserNotFoundException.class,()->service.deleteUser("3"));
+        assertEquals("User not Found for Id-3",error.getMessage());
+
+    }
+}
