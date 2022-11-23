@@ -22,8 +22,9 @@ public class UserServiceApplication {
     public ModelMapper modelMapper(){
         return new ModelMapper();
     }
+
     @Bean
-    public PasswordEncoder encoder(){
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }
