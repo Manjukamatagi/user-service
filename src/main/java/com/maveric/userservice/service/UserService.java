@@ -1,31 +1,11 @@
 package com.maveric.userservice.service;
 
-import com.maveric.userservice.dao.UserRepository;
-import com.maveric.userservice.dto.UserResponse;
-import com.maveric.userservice.entity.User;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.maveric.userservice.dto.UserDto;
 
-import java.util.Optional;
+import java.util.List;
 
-@Service
-public class UserService {
+public interface UserService {
 
-    @Autowired
-    private ModelMapper modelMapper;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    //Get user by ID
-    public UserResponse getUser(Long userId){
-       Optional<User> user = userRepository.findById(userId);
-       return modelMapper.map(user.get(),UserResponse.class);
-
-    }
-
-
-
+    public UserDto getUserDetails(String userId);
 
 }
