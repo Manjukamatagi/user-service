@@ -1,28 +1,38 @@
 package com.maveric.userservice.controller;
 
-import com.maveric.userservice.customHandler.UserNotFoundWithGivenEmailException;
-import com.maveric.userservice.dto.UserResponse;
+import com.maveric.userservice.dto.UserDto;
 import com.maveric.userservice.service.UserService;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.List;
+
+@RequestMapping("/api/v1")
 @RestController
-@RequestMapping("/api/v1/users")
 public class UserController {
-
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(UserController.class);
     @Autowired
-    private UserService userService;
+    UserService userService;
 
-    @GetMapping("/getUserByEmail/{emailId}")
-    public ResponseEntity<UserResponse> getUserByEmail(@PathVariable("emailId") String emailId)
-    throws UserNotFoundWithGivenEmailException {
-        UserResponse userResponse = userService.getUserByEmail(emailId);
-        return new ResponseEntity<>(userResponse, HttpStatus.OK);
-//        return ResponseEntity.ok(userResponse);
+    /* Returns list details by emailId */
+
+    @GetMapping("users/getUserByEmail/{emailId}")
+    public ResponseEntity<UserDto> getUserDetailsByEmail(@PathVariable String emailId) {
+        log.info("API call returning list of User details for the given valid emailId");
+        UserDto userDtoResponse = userService.getUserDetailsByEmail(emailId);
+        return new ResponseEntity<>(userDtoResponse, HttpStatus.OK);
+    }
+
+    @PostMapping("users")
+    public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
+        log.info("API call to create a new User");
+        UserDto userDtoResponse = userService.createUser(userDto);
+        log.info("User information Created successfully");
+        userDtoResponse.setPassword(null);
+        return new ResponseEntity<>(userDtoResponse, HttpStatus.CREATED);
     }
 }
