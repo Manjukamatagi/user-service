@@ -22,6 +22,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    // creating new user record
     @PostMapping("users")
     public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
         log.info("API call to create a new User");
