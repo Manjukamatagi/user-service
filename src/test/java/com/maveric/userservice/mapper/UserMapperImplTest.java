@@ -5,9 +5,6 @@ import com.maveric.userservice.model.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static com.maveric.userservice.UserServiceApplicationTests.getUser;
 import static com.maveric.userservice.UserServiceApplicationTests.getUserDto;
 
@@ -17,15 +14,15 @@ class UserMapperImplTest {
     void map() {
         UserDto userDto=getUserDto();
         User user = userMapper.map(userDto);
-        Assertions.assertEquals(getUserDto().getGender(), user.getGender());
-        Assertions.assertEquals(getUserDto().get_id(), user.get_id());
+        Assertions.assertEquals(userDto.getGender(), user.getGender());
+        Assertions.assertEquals(userDto.get_id(), user.get_id());
     }
 
     @Test
     void testMap() {
         User user=getUser();
         UserDto userdto = userMapper.map(user);
-        Assertions.assertEquals(getUser().getGender(), userdto.getGender());
-        Assertions.assertEquals(getUser().get_id(), userdto.get_id());
+        Assertions.assertEquals(user.getGender(), userdto.getGender());
+        Assertions.assertEquals(user.get_id(), userdto.get_id());
     }
 }

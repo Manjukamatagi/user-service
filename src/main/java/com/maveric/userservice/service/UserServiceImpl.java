@@ -25,15 +25,15 @@ public class UserServiceImpl implements UserService{
     public UserDto createUser(UserDto userDto) {
         String pass = passwordEncoder.encode(userDto.getPassword());
         userDto.setPassword(pass);
-        User userResult = repository.findByEmail(userDto.getEmail());
-        if (userResult == null) {
+        if(repository.findByEmail(userDto.getEmail()) != null){
+            throw new UserAlreadyExistException("User Already Exist for this emailId");
+        }else if(repository.findByPhoneNumber(userDto.getPhoneNumber()) != null) {
+            throw new UserAlreadyExistException("User Already Exist for this Phone number");
+        }else{
             User user = mapper.map(userDto);
             User userResult2 = repository.save(user);
-            log.error("Created new user successfully");
+            log.info("Created new user successfully");
             return mapper.map(userResult2);
-        } else {
-            log.error("User Already Exist for this emailId");
-            throw new UserAlreadyExistException("User Already Exist! for this emailId");
         }
     }
 }
