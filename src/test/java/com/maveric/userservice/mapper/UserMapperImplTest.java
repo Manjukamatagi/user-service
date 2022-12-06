@@ -10,6 +10,7 @@ import static com.maveric.userservice.UserServiceApplicationTests.getUserDto;
 
 class UserMapperImplTest {
     UserMapperImpl userMapper=new UserMapperImpl();
+
     @Test
     void map() {
         UserDto userDto=getUserDto();

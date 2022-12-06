@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService{
         String pass = passwordEncoder.encode(userDto.getPassword());
         userDto.setPassword(pass);
         if(repository.findByEmail(userDto.getEmail()) != null){
-            throw new UserAlreadyExistException("User Already Exist for this emailId");
+            throw new UserAlreadyExistException("User Already Exist for this EmailId");
         }else if(repository.findByPhoneNumber(userDto.getPhoneNumber()) != null) {
             throw new UserAlreadyExistException("User Already Exist for this Phone number");
         }else{
