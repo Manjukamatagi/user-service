@@ -4,7 +4,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maveric.userservice.dto.UserDto;
 import com.maveric.userservice.enumeration.Gender;
 import com.maveric.userservice.model.User;
+
+import org.junit.jupiter.api.Test;
+
 import org.springframework.boot.test.context.SpringBootTest;
+import java.time.LocalDate;
+
 import java.time.LocalDate;
 
 @SpringBootTest
@@ -13,17 +18,31 @@ public class UserServiceApplicationTests {
 	public static final String APIV1 ="/api/v1/users";
 	public static UserDto getUserDto()
 	{
-		return  UserDto.builder()._id("8123").firstName("manjunath").lastName("kamatagi").
-				middleName("y").phoneNumber("8123433645").email("manju@gmail.com").
-				address("bgk").dateOfBirth(LocalDate.parse("2020-06-15")).gender(Gender.MALE).
-				build();
+
+		return  UserDto.builder()
+				._id("8123")
+				.firstName("Manju")
+				.lastName("Sam")
+				.middleName("m")
+				.phoneNumber("8123433645")
+				.email("manju@gmail.com")
+				.address("bangalore")
+				.dateOfBirth(LocalDate.parse("2020-09-15"))
+				.gender(Gender.MALE)
+				.build();
 	}
 	public static User getUser()
 	{
 		return  User.builder()
-				._id("8123").firstName("manjunath").lastName("kamatagi").middleName("y").
-				phoneNumber("8123433645").email("manju@gmail.com").address("bgk").
-				dateOfBirth(LocalDate.parse("2020-06-15")).gender(Gender.MALE)
+				._id("8123")
+				.firstName("Manju")
+				.lastName("Sam")
+				.middleName("m")
+				.phoneNumber("8123433645")
+				.email("manju@gmail.com")
+				.address("bangalore")
+				.dateOfBirth(LocalDate.parse("2020-09-15"))
+				.gender(Gender.MALE)
 				.build();
 	}
 	public static String asJsonString(final Object obj) {
