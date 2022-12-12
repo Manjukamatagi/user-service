@@ -5,11 +5,13 @@ import com.maveric.userservice.dto.UserDto;
 import com.maveric.userservice.enumeration.Gender;
 import com.maveric.userservice.model.User;
 
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.Test;
 
+import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDate;
 
 @SpringBootTest
+
 public
 class UserServiceApplicationTests {
 
@@ -43,6 +45,7 @@ class UserServiceApplicationTests {
 				.gender(Gender.MALE)
 				.build();
 	}
+
 	public static String asJsonString(final Object obj) {
 		try {
 			return new ObjectMapper().writeValueAsString(obj);

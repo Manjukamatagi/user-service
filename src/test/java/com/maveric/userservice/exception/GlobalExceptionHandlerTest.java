@@ -3,20 +3,29 @@ package com.maveric.userservice.exception;
 import com.maveric.userservice.dto.ErrorDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.MethodParameter;
+
 import org.springframework.validation.BindingResult;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 
-class ExceptionControllerAdvisorTest {
-    private ExceptionControllerAdvisor controllerAdvisor = new ExceptionControllerAdvisor();
+class GlobalExceptionHandlerTest {
+
+    private GlobalExceptionHandler controllerAdvisor = new GlobalExceptionHandler();
     @Test
     void handleUserNotFoundException() {
         UserNotFoundException exception = new UserNotFoundException("User Not found");
         ErrorDto error = controllerAdvisor.handleUserNotFoundException(exception);
         assertEquals("404",error.getCode());
     }
+
+    @Test
+    void handleUserAlreadyExistException() {
+        UserAlreadyExistException exception = new UserAlreadyExistException("User Already Exist");
+        ErrorDto error = controllerAdvisor.handleUserAlreadyExistException(exception);
+        assertEquals("400",error.getCode());
+      }
 
 
     @Test
@@ -38,4 +47,5 @@ class ExceptionControllerAdvisorTest {
 
 
     }
+
 }
