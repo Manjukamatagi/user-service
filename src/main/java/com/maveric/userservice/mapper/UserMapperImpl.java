@@ -1,6 +1,5 @@
 package com.maveric.userservice.mapper;
 
-
 import com.maveric.userservice.dto.UserDto;
 import com.maveric.userservice.model.User;
 import org.springframework.stereotype.Component;
@@ -10,6 +9,7 @@ import java.util.List;
 
 @Component
 public class UserMapperImpl implements UserMapper {
+
     @Override
     public User map(UserDto userDto) {
         return new User(
@@ -84,4 +84,5 @@ public class UserMapperImpl implements UserMapper {
         else
             return Collections.<UserDto>emptyList();
     }
+
 }

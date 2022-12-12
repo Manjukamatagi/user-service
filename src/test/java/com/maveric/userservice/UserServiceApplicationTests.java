@@ -4,8 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maveric.userservice.dto.UserDto;
 import com.maveric.userservice.enumeration.Gender;
 import com.maveric.userservice.model.User;
+
 import org.junit.jupiter.api.Test;
+
 import org.springframework.boot.test.context.SpringBootTest;
+import java.time.LocalDate;
 
 import java.time.LocalDate;
 
@@ -15,6 +18,7 @@ public class UserServiceApplicationTests {
 	public static final String APIV1 ="/api/v1/users";
 	public static UserDto getUserDto()
 	{
+
 		return  UserDto.builder()
 				._id("8123")
 				.firstName("Manju")
