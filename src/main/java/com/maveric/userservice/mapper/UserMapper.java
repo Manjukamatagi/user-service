@@ -7,8 +7,10 @@ import java.util.List;
 
 @Mapper(componentModel="User")
 public interface UserMapper {
+
     User map(UserDto userDto);
     UserDto map(User user);
     List<User> mapToModel (List<UserDto> userDtos);
     List<UserDto> mapToDto (List<User> users);
+
 }

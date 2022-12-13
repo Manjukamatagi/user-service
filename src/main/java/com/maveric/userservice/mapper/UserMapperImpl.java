@@ -27,7 +27,6 @@ public class UserMapperImpl implements UserMapper {
 
         );
     }
-
     @Override
     public UserDto map(User user) {
         return new UserDto(

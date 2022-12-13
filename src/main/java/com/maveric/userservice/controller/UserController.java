@@ -8,10 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 import javax.validation.Valid;
-
+import java.util.List;
 
 @RequestMapping("/api/v1")
 @RestController
@@ -19,6 +17,15 @@ public class UserController {
     private static final Logger log = org.slf4j.LoggerFactory.getLogger(UserController.class);
     @Autowired
     UserService userService;
+
+    /* Returns list of user details by userId */
+    @GetMapping("users/{userId}")
+    public ResponseEntity<UserDto> getUserDetails(@PathVariable String userId) {
+        log.info("API call returning list of User details for the given valid UserId");
+        UserDto userDtoResponse = userService.getUserDetails(userId);
+        return new ResponseEntity<>(userDtoResponse, HttpStatus.OK);
+    }
+
     /* Returns list of All Users */
     @GetMapping("users")
     public ResponseEntity<List<UserDto>> getUsers(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer pageSize){

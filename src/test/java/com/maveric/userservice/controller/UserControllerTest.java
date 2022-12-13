@@ -35,6 +35,15 @@ class UserControllerTest {
     private UserService userService;
     @Autowired
     ObjectMapper objectMapper;
+
+    @Test
+    void getUserDetails() throws Exception {
+        mvc.perform(get(APIV1+"/2")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(print());
+      }
+
     @Test
     void getUsers() throws Exception {
         mvc.perform(get(APIV1)
@@ -42,4 +51,5 @@ class UserControllerTest {
                 .andExpect(status().isOk())
                 .andDo(print());
     }
+
 }

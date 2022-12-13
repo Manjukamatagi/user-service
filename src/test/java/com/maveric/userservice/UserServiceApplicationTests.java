@@ -10,15 +10,15 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDate;
 
-import java.time.LocalDate;
-
 @SpringBootTest
-public class UserServiceApplicationTests {
+
+public
+class UserServiceApplicationTests {
 
 	public static final String APIV1 ="/api/v1/users";
+
 	public static UserDto getUserDto()
 	{
-
 		return  UserDto.builder()
 				._id("8123")
 				.firstName("Manju")
@@ -45,6 +45,7 @@ public class UserServiceApplicationTests {
 				.gender(Gender.MALE)
 				.build();
 	}
+
 	public static String asJsonString(final Object obj) {
 		try {
 			return new ObjectMapper().writeValueAsString(obj);
