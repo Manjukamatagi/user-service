@@ -9,7 +9,6 @@ import java.util.List;
 
 @Component
 public class UserMapperImpl implements UserMapper {
-
     @Override
     public User map(UserDto userDto) {
         return new User(
@@ -42,7 +41,8 @@ public class UserMapperImpl implements UserMapper {
                 user.getRole(),
                 user.getPassword()
         );
-    }
+    };
+
 
     @Override
     public List<User> mapToModel(List<UserDto> userDtos) {

@@ -18,6 +18,13 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    /* Returns list details by emailId */
+    @GetMapping("users/getUserByEmail/{emailId}")
+    public ResponseEntity<UserDto> getUserDetailsByEmail(@PathVariable String emailId) {
+        log.info("API call returning list of User details for the given valid emailId");
+        UserDto userDtoResponse = userService.getUserDetailsByEmail(emailId);
+        return new ResponseEntity<>(userDtoResponse, HttpStatus.OK);
+    }
     /* Returns list of user details by userId */
     @GetMapping("users/{userId}")
     public ResponseEntity<UserDto> getUserDetails(@PathVariable String userId) {
@@ -25,7 +32,6 @@ public class UserController {
         UserDto userDtoResponse = userService.getUserDetails(userId);
         return new ResponseEntity<>(userDtoResponse, HttpStatus.OK);
     }
-
     /* Returns list of All Users */
     @GetMapping("users")
     public ResponseEntity<List<UserDto>> getUsers(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer pageSize){

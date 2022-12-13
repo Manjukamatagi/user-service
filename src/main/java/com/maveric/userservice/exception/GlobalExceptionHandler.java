@@ -1,10 +1,9 @@
 package com.maveric.userservice.exception;
 
 import com.maveric.userservice.dto.ErrorDto;
-import feign.FeignException;
+
 import org.slf4j.Logger;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;

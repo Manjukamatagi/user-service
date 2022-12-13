@@ -27,7 +27,20 @@ public class ExceptionControllerAdvisor {
         log.error("{} -> {}",USER_NOT_FOUND_CODE,exceptionString);
         return errorDto;
     }
+<<<<<<< HEAD
+    @ExceptionHandler(UserAlreadyExistException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public final ErrorDto handleUserAlreadyExistException(UserAlreadyExistException exception) {
+        ErrorDto errorDto = new ErrorDto();
+        errorDto.setCode(BAD_REQUEST_CODE);
+        errorDto.setMessage(exception.getMessage());
+        exceptionString = exception.getMessage();
+        log.error("{}->{}",BAD_REQUEST_CODE,exceptionString);
+        return errorDto;
+    }
+=======
 
+>>>>>>> pre_dev
     @ExceptionHandler(InvalidException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public final ErrorDto invalidException(InvalidException exception) {
@@ -98,5 +111,8 @@ public class ExceptionControllerAdvisor {
         log.error("{} -> {} -> {}",SERVICE_UNAVAILABLE_CODE,SERVICE_UNAVAILABLE_MESSAGE,exceptionString);
         return errorDto;
     }
+<<<<<<< HEAD
+=======
 
+>>>>>>> pre_dev
 }

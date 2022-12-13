@@ -44,13 +44,14 @@ class UserServiceApplicationTests {
 				.dateOfBirth(LocalDate.parse("2020-09-15"))
 				.gender(Gender.MALE)
 				.build();
-	}
 
+	}
 	public static String asJsonString(final Object obj) {
 		try {
 			return new ObjectMapper().writeValueAsString(obj);
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+
 	}
 }

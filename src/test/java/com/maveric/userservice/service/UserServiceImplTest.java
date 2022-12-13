@@ -1,7 +1,6 @@
 package com.maveric.userservice.service;
 
 import com.maveric.userservice.dto.UserDto;
-
 import com.maveric.userservice.enumeration.Gender;
 
 import com.maveric.userservice.mapper.UserMapper;
@@ -14,6 +13,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Page;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -55,6 +57,14 @@ class UserServiceImplTest {
     private BCryptPasswordEncoder passwordEncoder;
 
     @Test
+
+    void getUserDetailsByEmail() {
+        when(repository.findByEmail("test@gmail.com")).thenReturn(getUser());
+        when(mapper.map(any(User.class))).thenReturn(getUserDto());
+        UserDto userDto = service.getUserDetailsByEmail("test@gmail.com");
+        assertSame(userDto.getFirstName(), getUserDto().getFirstName());
+    }
+    @Test
     void getUserDetails() {
         when(repository.findById("2")).thenReturn(Optional.of(getUser()));
         when(mapper.map(any(User.class))).thenReturn(getUserDto());
@@ -62,7 +72,6 @@ class UserServiceImplTest {
         assertSame(userDto.getFirstName(),getUserDto().getFirstName());
 
       }
-
     @Test
     void getUsers() {
         Page<User> pagedResponse = new PageImpl(Arrays.asList(getUser(),getUser()));
@@ -81,5 +90,5 @@ class UserServiceImplTest {
         assertEquals(0, users.size());
     }
 
-
 }
+

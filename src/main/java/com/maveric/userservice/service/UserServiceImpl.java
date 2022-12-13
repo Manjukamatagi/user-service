@@ -1,17 +1,21 @@
 package com.maveric.userservice.service;
 
 import com.maveric.userservice.dto.UserDto;
-
+import com.maveric.userservice.exception.UserAlreadyExistException;
 import com.maveric.userservice.exception.UserNotFoundException;
 import com.maveric.userservice.dto.UserDto;
 import com.maveric.userservice.exception.UserAlreadyExistException;
-
 import com.maveric.userservice.mapper.UserMapper;
 import com.maveric.userservice.model.User;
 import com.maveric.userservice.repository.UserRepository;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
+
+import static com.maveric.userservice.constants.Constants.USER_DELETED_SUCCESS;
+import static com.maveric.userservice.constants.Constants.USER_NOT_FOUND_MESSAGE;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +29,6 @@ import java.util.List;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 @Service
 public class UserServiceImpl implements UserService {
     private static final Logger log = org.slf4j.LoggerFactory.getLogger(UserServiceImpl.class);
@@ -38,6 +41,20 @@ public class UserServiceImpl implements UserService {
     BCryptPasswordEncoder passwordEncoder;
 
     @Override
+    public UserDto getUserDetailsByEmail(String emailId) {
+        User userResult = repository.findByEmail(emailId);
+        if (userResult != null)
+        {
+            log.info("Retrieved list of user details for given emailId");
+            return mapper.map(userResult);
+        }
+        else
+        {
+            log.info("User details does not exist! Returns empty User details.");
+            return new UserDto();
+        }
+    }
+
     public UserDto getUserDetails(String userId) {
         User userResult = repository.findById(userId).orElseThrow(() -> new UserNotFoundException("User not found with id " + userId));
         log.info("Retrieved list of user details for given UserId");
@@ -56,7 +73,6 @@ public class UserServiceImpl implements UserService {
             return new ArrayList<>();
         }
     }
-
     @Override
     public UserDto createUser(UserDto userDto) {
         String pass = passwordEncoder.encode(userDto.getPassword());
@@ -72,6 +88,4 @@ public class UserServiceImpl implements UserService {
             throw new UserAlreadyExistException("User Already Exist! for this emailId");
         }
     }
-
-
 }

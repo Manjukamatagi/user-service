@@ -26,7 +26,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @WebMvcTest(UserController.class)
 class UserControllerTest {
-
     @Autowired
     private MockMvc mvc;
     @MockBean
@@ -37,13 +36,18 @@ class UserControllerTest {
     ObjectMapper objectMapper;
 
     @Test
+    void getUserDetailsByEmail() throws Exception {
+        mvc.perform(get(APIV1+"/getUserByEmail/test@gmail.com")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
     void getUserDetails() throws Exception {
         mvc.perform(get(APIV1+"/2")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print());
       }
-
     @Test
     void getUsers() throws Exception {
         mvc.perform(get(APIV1)
@@ -51,5 +55,4 @@ class UserControllerTest {
                 .andExpect(status().isOk())
                 .andDo(print());
     }
-
 }

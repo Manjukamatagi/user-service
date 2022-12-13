@@ -20,7 +20,6 @@ class UserMapperImplTest {
         Assertions.assertEquals(getUserDto().getGender(), user.getGender());
         Assertions.assertEquals(getUserDto().get_id(), user.get_id());
     }
-
     @Test
     void testMap() {
         User user=getUser();
@@ -29,3 +28,5 @@ class UserMapperImplTest {
         Assertions.assertEquals(getUser().get_id(), userdto.get_id());
     }
 }
+
+
