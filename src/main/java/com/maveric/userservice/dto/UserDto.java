@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.maveric.userservice.enumeration.Gender;
 import com.maveric.userservice.utility.DateDeSerializer;
 import com.maveric.userservice.validation.PhoneNumber;
+
 import lombok.*;
 
 import javax.persistence.EnumType;

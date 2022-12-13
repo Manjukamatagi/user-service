@@ -26,7 +26,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @WebMvcTest(UserController.class)
 class UserControllerTest {
-
     @Autowired
     private MockMvc mvc;
     @MockBean
@@ -42,5 +41,18 @@ class UserControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print());
+    }
+    void getUserDetails() throws Exception {
+        mvc.perform(get(APIV1+"/2")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(print());
       }
+    @Test
+    void getUsers() throws Exception {
+        mvc.perform(get(APIV1)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
 }

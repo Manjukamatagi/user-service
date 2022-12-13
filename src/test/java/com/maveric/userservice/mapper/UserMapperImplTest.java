@@ -13,7 +13,13 @@ import static com.maveric.userservice.UserServiceApplicationTests.getUserDto;
 
 class UserMapperImplTest {
     UserMapperImpl userMapper=new UserMapperImpl();
-
+    @Test
+    void map() {
+        UserDto userDto=getUserDto();
+        User user = userMapper.map(userDto);
+        Assertions.assertEquals(getUserDto().getGender(), user.getGender());
+        Assertions.assertEquals(getUserDto().get_id(), user.get_id());
+    }
     @Test
     void testMap() {
         User user=getUser();
@@ -21,7 +27,6 @@ class UserMapperImplTest {
         Assertions.assertEquals(getUser().getGender(), userdto.getGender());
         Assertions.assertEquals(getUser().get_id(), userdto.get_id());
     }
-
 }
 
 

@@ -9,7 +9,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-@SpringBootApplication (exclude = {SecurityAutoConfiguration.class})
+@SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
+
 @EnableEurekaClient
 public class UserServiceApplication {
 
@@ -24,4 +25,5 @@ public class UserServiceApplication {
     public ModelMapper modelMapper(){
         return new ModelMapper();
     }
+
 }

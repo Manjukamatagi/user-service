@@ -4,12 +4,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maveric.userservice.dto.UserDto;
 import com.maveric.userservice.enumeration.Gender;
 import com.maveric.userservice.model.User;
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
+import org.junit.jupiter.api.Test;
+
+import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDate;
 
 @SpringBootTest
+
 public
 class UserServiceApplicationTests {
 
@@ -42,6 +44,7 @@ class UserServiceApplicationTests {
 				.dateOfBirth(LocalDate.parse("2020-09-15"))
 				.gender(Gender.MALE)
 				.build();
+
 	}
 	public static String asJsonString(final Object obj) {
 		try {
@@ -49,6 +52,6 @@ class UserServiceApplicationTests {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-	}
 
+	}
 }

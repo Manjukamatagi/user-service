@@ -19,14 +19,27 @@ public class UserController {
     UserService userService;
 
     /* Returns list details by emailId */
-
     @GetMapping("users/getUserByEmail/{emailId}")
     public ResponseEntity<UserDto> getUserDetailsByEmail(@PathVariable String emailId) {
         log.info("API call returning list of User details for the given valid emailId");
         UserDto userDtoResponse = userService.getUserDetailsByEmail(emailId);
         return new ResponseEntity<>(userDtoResponse, HttpStatus.OK);
     }
-
+    /* Returns list of user details by userId */
+    @GetMapping("users/{userId}")
+    public ResponseEntity<UserDto> getUserDetails(@PathVariable String userId) {
+        log.info("API call returning list of User details for the given valid UserId");
+        UserDto userDtoResponse = userService.getUserDetails(userId);
+        return new ResponseEntity<>(userDtoResponse, HttpStatus.OK);
+    }
+    /* Returns list of All Users */
+    @GetMapping("users")
+    public ResponseEntity<List<UserDto>> getUsers(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "10") Integer pageSize){
+        List<UserDto> userRespons = userService.getUsers(page,pageSize);
+        log.info("API call returning list of All Users");
+        return new ResponseEntity<>(userRespons, HttpStatus.OK);
+    }
+    // creating new user record
     @PostMapping("users")
     public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
         log.info("API call to create a new User");
@@ -36,3 +49,4 @@ public class UserController {
         return new ResponseEntity<>(userDtoResponse, HttpStatus.CREATED);
     }
 }
+
