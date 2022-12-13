@@ -41,7 +41,6 @@ class GlobalExceptionHandlerTest {
         MethodParameter methodParameter = mock(MethodParameter.class);
         BindingResult bindingResult = mock(BindingResult.class);
         HttpRequestMethodNotSupportedException exception = new HttpRequestMethodNotSupportedException("error");
-        ;
         ErrorDto error = controllerAdvisor.handleHttpRequestMethodNotSupportedException(exception);
         assertEquals("405", error.getCode());
 
