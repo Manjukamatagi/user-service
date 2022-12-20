@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.maveric.userservice.enumeration.Gender;
 import com.maveric.userservice.utility.DateDeSerializer;
 import com.maveric.userservice.validation.PhoneNumber;
-
 import lombok.*;
 
 import javax.persistence.EnumType;
@@ -21,7 +20,7 @@ import java.time.LocalDate;
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @NoArgsConstructor
 
-public class UserDto {
+public class EmailDto {
 
     private String _id;
     @Size(min = 2 , message="First Name atleast 2 charaters")
