@@ -12,10 +12,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
 import javax.ws.rs.core.MediaType;
-
 import static com.maveric.userservice.UserServiceApplicationTests.APIV1;
+import static com.maveric.userservice.UserServiceApplicationTests.getUserDto;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -25,7 +24,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @WebMvcTest(UserController.class)
 class UserControllerTest {
-
     @Autowired
     private MockMvc mvc;
     @MockBean
@@ -42,6 +40,34 @@ class UserControllerTest {
                 .andExpect(status().isOk())
                 .andDo(print());
       }
-
-
+    @Test
+    void getUserDetailsByEmail() throws Exception {
+        mvc.perform(get(APIV1+"/getUserByEmail/test@gmail.com")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
+    @Test
+    void getUserDetails() throws Exception {
+        mvc.perform(get(APIV1+"/2")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
+    @Test
+    void getUsers() throws Exception {
+        mvc.perform(get(APIV1)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
+    @Test
+    void updateUser() throws Exception {
+        mvc.perform(put(APIV1+"/123")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(getUserDto()))
+                )
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
 }

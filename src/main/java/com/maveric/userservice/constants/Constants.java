@@ -1,17 +1,13 @@
 package com.maveric.userservice.constants;
 
-
 public class Constants {
 
     private Constants()
     {
 
     }
-
-
     public static final String USER_NOT_FOUND_MESSAGE="User not Found for Id-";
     public static final String USER_DELETED_SUCCESS="User deleted successfully.";
-
     public static final String USER_NOT_FOUND_CODE="404";
     public static final String METHOD_NOT_ALLOWED_CODE="405";
     public static final String METHOD_NOT_ALLOWED_MESSAGE="Method Not Allowed. Kindly check the Request URL and Request Type.";

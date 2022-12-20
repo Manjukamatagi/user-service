@@ -1,6 +1,5 @@
 package com.maveric.userservice.mapper;
 
-
 import com.maveric.userservice.dto.UserDto;
 import com.maveric.userservice.model.User;
 import org.springframework.stereotype.Component;
