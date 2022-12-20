@@ -26,6 +26,7 @@ public class UserMapperImpl implements UserMapper {
 
         );
     }
+
     @Override
     public UserDto map(User user) {
         return new UserDto(
@@ -41,8 +42,8 @@ public class UserMapperImpl implements UserMapper {
                 user.getRole(),
                 user.getPassword()
         );
-    };
 
+    }
 
     @Override
     public List<User> mapToModel(List<UserDto> userDtos) {
@@ -83,5 +84,4 @@ public class UserMapperImpl implements UserMapper {
         else
             return Collections.<UserDto>emptyList();
     }
-
 }

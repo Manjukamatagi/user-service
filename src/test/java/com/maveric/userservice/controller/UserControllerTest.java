@@ -42,16 +42,26 @@ class UserControllerTest {
                 .andExpect(status().isOk())
                 .andDo(print());
     }
+    @Test
     void getUserDetails() throws Exception {
         mvc.perform(get(APIV1+"/2")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(print());
-      }
+    }
     @Test
     void getUsers() throws Exception {
         mvc.perform(get(APIV1)
                         .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
+    @Test
+    void updateUser() throws Exception {
+        mvc.perform(put(APIV1+"/123")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(getUserDto()))
+                )
                 .andExpect(status().isOk())
                 .andDo(print());
     }

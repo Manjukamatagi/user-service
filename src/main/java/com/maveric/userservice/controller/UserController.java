@@ -15,9 +15,18 @@ import java.util.List;
 @RestController
 public class UserController {
     private static final Logger log = org.slf4j.LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     UserService userService;
 
+    /* Update User by UserId */
+    @PutMapping("users/{userId}")
+    public ResponseEntity<UserDto> updateUser(@PathVariable String userId, @RequestBody UserDto userDto) {
+        log.info("API call to Update User for valid userId");
+        UserDto userDto1 = userService.updateUser(userId, userDto);
+        log.info("User information Updated successfully");
+        return new ResponseEntity<>(userDto1, HttpStatus.OK);
+    }
     /* Returns list details by emailId */
     @GetMapping("users/getUserByEmail/{emailId}")
     public ResponseEntity<UserDto> getUserDetailsByEmail(@PathVariable String emailId) {
@@ -48,5 +57,6 @@ public class UserController {
         userDtoResponse.setPassword(null);
         return new ResponseEntity<>(userDtoResponse, HttpStatus.CREATED);
     }
+
 }
 
