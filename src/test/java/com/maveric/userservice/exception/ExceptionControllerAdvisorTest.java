@@ -2,6 +2,19 @@ package com.maveric.userservice.exception;
 
 import com.maveric.userservice.dto.ErrorDto;
 import org.junit.jupiter.api.Test;
+<<<<<<< HEAD
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class ExceptionControllerAdvisorTest     {
+    private GlobalControllerAdvisor controllerAdvisor = new GlobalControllerAdvisor();
+
+    @Test
+    void invalidException() {
+        InvalidException exception = new InvalidException("User Not found");
+        ErrorDto error = controllerAdvisor.invalidException(exception);
+        assertEquals("404",error.getCode());
+    }
+=======
 import org.springframework.core.MethodParameter;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindingResult;
@@ -12,6 +25,7 @@ import static org.mockito.Mockito.mock;
 
 class ExceptionControllerAdvisorTest {
     private ExceptionControllerAdvisor controllerAdvisor = new ExceptionControllerAdvisor();
+>>>>>>> pre_dev
     @Test
     void handleUserNotFoundException() {
         UserNotFoundException exception = new UserNotFoundException("User Not found");
@@ -19,6 +33,9 @@ class ExceptionControllerAdvisorTest {
         assertEquals("404",error.getCode());
     }
 
+<<<<<<< HEAD
+}
+=======
     @Test
     void invalidException() {
         InvalidException exception = new InvalidException("User Not found");
@@ -51,3 +68,4 @@ class ExceptionControllerAdvisorTest {
         assertEquals("500",error.getCode());
     }
 }
+>>>>>>> pre_dev

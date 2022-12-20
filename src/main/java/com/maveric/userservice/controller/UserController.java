@@ -13,12 +13,20 @@ import java.util.List;
 
 @RequestMapping("/api/v1")
 @RestController
+
 public class UserController {
     private static final Logger log = org.slf4j.LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     UserService userService;
-
+    /* Deleting user by userId */
+    @DeleteMapping("users/{userId}")
+    public ResponseEntity<String> deleteUser(@PathVariable String userId) {
+        log.info("API call to delete User based on UserId");
+        String result = userService.deleteUser(userId);
+        log.info("User deleted successfully");
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
     /* Update User by UserId */
     @PutMapping("users/{userId}")
     public ResponseEntity<UserDto> updateUser(@PathVariable String userId, @RequestBody UserDto userDto) {

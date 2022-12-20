@@ -42,7 +42,6 @@ public class UserMapperImpl implements UserMapper {
                 user.getRole(),
                 user.getPassword()
         );
-
     }
 
     @Override

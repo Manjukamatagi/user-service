@@ -12,9 +12,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
 import javax.ws.rs.core.MediaType;
-
 import static com.maveric.userservice.UserServiceApplicationTests.APIV1;
 import static com.maveric.userservice.UserServiceApplicationTests.getUserDto;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -35,6 +33,13 @@ class UserControllerTest {
     @Autowired
     ObjectMapper objectMapper;
 
+    @Test
+    void deleteUser() throws Exception {
+        mvc.perform(delete(APIV1+"/123")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(print());
+      }
     @Test
     void getUserDetailsByEmail() throws Exception {
         mvc.perform(get(APIV1+"/getUserByEmail/test@gmail.com")

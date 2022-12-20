@@ -9,21 +9,24 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import java.time.LocalDate;
 
+import java.time.LocalDate;
+
 @SpringBootTest
-public
-class UserServiceApplicationTests {
+
+public class UserServiceApplicationTests {
+
 	public static final String APIV1 = "/api/v1/users";
 
 	public static UserDto getUserDto() {
 		return UserDto.builder()
 				._id("8123")
 				.firstName("Manju")
-				.lastName("sam")
-				.middleName("ma")
+				.lastName("Sam")
+				.middleName("mm")
 				.phoneNumber("8123433645")
-				.email("manju@gmail.com")
-				.address("Bagalkot")
-				.dateOfBirth(LocalDate.parse("2020-04-15"))
+				.email("mainu@gmail.com")
+				.address("Backtalk")
+				.dateOfBirth(LocalDate.parse("2020-10-19"))
 				.gender(Gender.MALE)
 				.build();
 	}
@@ -32,12 +35,12 @@ class UserServiceApplicationTests {
 		return User.builder()
 				._id("8123")
 				.firstName("Manju")
-				.lastName("sam")
-				.middleName("ma")
+				.lastName("Sam")
+				.middleName("mm")
 				.phoneNumber("8123433645")
-				.email("manju@gmail.com")
-				.address("Bagalkot")
-				.dateOfBirth(LocalDate.parse("2020-04-15"))
+				.email("mainu@gmail.com")
+				.address("Backtalk")
+				.dateOfBirth(LocalDate.parse("2020-10-19"))
 				.gender(Gender.MALE)
 				.build();
 	}
