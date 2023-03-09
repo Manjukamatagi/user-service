@@ -1,9 +1,11 @@
 package com.maveric.userservice.constraints;
 
 import com.maveric.userservice.constant.Gender;
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
+//import jakarta.validation.ConstraintValidator;
+//import jakarta.validation.ConstraintValidatorContext;
 
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import java.util.Arrays;
 
 public class GenderValidatorImpl implements ConstraintValidator<GenderValidator, Gender> {

@@ -5,12 +5,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.maveric.userservice.constant.Gender;
 import com.maveric.userservice.constraints.BirthDateValidator;
 import com.maveric.userservice.constraints.GenderValidator;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.validation.constraints.*;
+//import jakarta.persistence.EnumType;
+//import jakarta.persistence.Enumerated;
+//import jakarta.validation.constraints.*;
 
 import lombok.Data;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.validation.constraints.*;
 import java.util.Date;
 
 @Data

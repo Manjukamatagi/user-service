@@ -1,10 +1,12 @@
 package com.maveric.userservice.dto;
 
 import com.maveric.userservice.constant.Gender;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+//import jakarta.persistence.EnumType;
+//import jakarta.persistence.Enumerated;
 import lombok.Data;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.Date;
 
 @Data

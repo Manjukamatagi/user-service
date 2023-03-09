@@ -1,9 +1,11 @@
 package com.maveric.userservice.constraints;
 
 import com.maveric.userservice.constant.Gender;
-import jakarta.validation.Constraint;
-import jakarta.validation.Payload;
+//import jakarta.validation.Constraint;
+//import jakarta.validation.Payload;
 
+import javax.validation.Constraint;
+import javax.validation.Payload;
 import java.lang.annotation.*;
 
 @Target({ElementType.FIELD, ElementType.TYPE, ElementType.ANNOTATION_TYPE})

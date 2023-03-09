@@ -3,7 +3,7 @@ package com.maveric.userservice.exception;
 import com.maveric.userservice.constant.MessageConstant;
 import com.maveric.userservice.dto.Error;
 import feign.FeignException;
-import jakarta.servlet.http.HttpServletResponse;
+//import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
+
+import javax.servlet.http.HttpServletResponse;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

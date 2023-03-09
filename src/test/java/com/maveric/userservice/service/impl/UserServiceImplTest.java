@@ -86,10 +86,10 @@ class UserServiceImplTest {
 
     @Test
     void getUserByEmail(){
-        when(mockedUserRepository.findUserByEmail("hinsj@maveric-systems.com")).thenReturn(Optional.of(getUser()));
+        when(mockedUserRepository.findUserByEmail("manju@maveric-systems.com")).thenReturn(Optional.of(getUser()));
         when(dtoToModelConverter.userToDtoEmail(any(User.class))).thenReturn(getUserEmailDto());
 
-        UserEmailDto user = mockedUserService.getUserByEmail("hinsj@maveric-systems.com");
+        UserEmailDto user = mockedUserService.getUserByEmail("manju@maveric-systems.com");
 
         assertNotNull(user);
         assertSame(user.getEmail(),getUser().getEmail());
@@ -107,45 +107,45 @@ class UserServiceImplTest {
 
     public static User getUser() {
         User user = new User();
-        user.setFirstName("Hins");
-        user.setMiddleName("D");
-        user.setLastName("Jain");
-        user.setAddress("Mumbai");
+        user.setFirstName("Manju");
+        user.setMiddleName("k");
+        user.setLastName("Kamatagi");
+        user.setAddress("Pune");
         user.setGender(Gender.MALE);
-        user.setEmail("hinsj@maveric-systems.com");
+        user.setEmail("manju@maveric-systems.com");
         user.setPassword("Pass@word1");
-        user.setDateOfBirth(Date.from(Instant.parse("1994-10-27T00:00:00Z")));
-        user.setPhoneNumber("9594484384");
+        user.setDateOfBirth(Date.from(Instant.parse("1994-06-16T00:00:00Z")));
+        user.setPhoneNumber("8123433645");
 
         return user;
     }
 
     public static UserDto getUserDto() {
         UserDto user = new UserDto();
-        user.setFirstName("Hins");
-        user.setMiddleName("D");
-        user.setLastName("Jain");
-        user.setAddress("Mumbai");
+        user.setFirstName("Manju");
+        user.setMiddleName("k");
+        user.setLastName("Kamatagi");
+        user.setAddress("Pune");
         user.setGender(Gender.MALE);
-        user.setEmail("hinsj@maveric-systems.com");
+        user.setEmail("manju@maveric-systems.com");
         user.setPassword("Pass@word1");
-        user.setDateOfBirth(Date.from(Instant.parse("1994-10-27T00:00:00Z")));
-        user.setPhoneNumber("9594484384");
+        user.setDateOfBirth(Date.from(Instant.parse("1994-06-16T00:00:00Z")));
+        user.setPhoneNumber("8123433645");
 
         return user;
     }
 
     public static UserEmailDto getUserEmailDto() {
         UserEmailDto user = new UserEmailDto();
-        user.setFirstName("Hins");
+        user.setFirstName("manju");
         user.setMiddleName("D");
-        user.setLastName("Jain");
+        user.setLastName("Kamatagi");
         user.setAddress("Mumbai");
         user.setGender(Gender.MALE);
-        user.setEmail("hinsj@maveric-systems.com");
+        user.setEmail("manju@maveric-systems.com");
         user.setPassword("Pass@word1");
-        user.setDateOfBirth(Date.from(Instant.parse("1994-10-27T00:00:00Z")));
-        user.setPhoneNumber("9594484384");
+        user.setDateOfBirth(Date.from(Instant.parse("1994-06-16T00:00:00Z")));
+        user.setPhoneNumber("8123433645");
 
         return user;
     }

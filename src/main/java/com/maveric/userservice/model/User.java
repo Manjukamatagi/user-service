@@ -1,11 +1,12 @@
 package com.maveric.userservice.model;
 
 import com.maveric.userservice.constant.Gender;
-import jakarta.persistence.*;
+//import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
 import java.util.Date;
 
 @Getter
