@@ -46,7 +46,7 @@ public class UserController {
         userDto.setPassword(this.bCryptPasswordEncoder.encode(userDto.getPassword()));
         return new ResponseEntity<>(userService.createUser(userDto), HttpStatus.CREATED);
     }
-    
+
     @PutMapping("/users/{userId}")
     public ResponseEntity<UserDto> updateUser(@PathVariable("userId") String userId, @Valid @RequestBody UserDto userDto,
                                               @RequestHeader(value = "userid") String headerUserId) {
